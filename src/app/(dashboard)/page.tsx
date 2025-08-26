@@ -1,5 +1,6 @@
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+'use client';
+
+import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import SpendingAnalytics from '@/components/dashboard/SpendingAnalytics';
 import BudgetOverview from '@/components/dashboard/BudgetOverview';
@@ -8,11 +9,23 @@ import VendorPerformance from '@/components/dashboard/VendorPerformance';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { TrendingUp, Package, Users, DollarSign, Clock, AlertTriangle } from 'lucide-react';
 
-export default async function DashboardPage() {
-  const session = await getServerSession(authOptions);
-  
+export default function DashboardPage() {
+  const { data: session, status } = useSession();
+
+  if (status === 'loading') {
+    return (
+      <div className="flex items-center justify-center h-96">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-2 text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   if (!session) {
     redirect('/login');
+    return null;
   }
 
   // Mock data for the dashboard stats
