@@ -49,6 +49,8 @@
     "chart.js": "^4.4.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.0.0",
+    "eslint": "^9.34.0",
+    "eslint-config-next": "^15.5.0",
     "framer-motion": "^10.16.16",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.294.0",

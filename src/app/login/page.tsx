@@ -103,9 +103,10 @@ export default function LoginPage() {
                 {loading ? 'Signing in...' : 'Sign in'}
               </Button>
             </form>
-
+            <p>demo user: admin@company.com</p>
+            <p> password: admin123</p>
             <div className="text-center text-xs text-gray-500">
-              <p>Built with Next.js 14 & MongoDB Atlas</p>
+              <p>Built by Chandan25sharma</p>
             </div>
           </CardContent>
         </Card>
